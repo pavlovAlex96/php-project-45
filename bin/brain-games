@@ -4,6 +4,7 @@
 use function cli\line;
 use function cli\prompt;
 use function Hexlet\Code\greetings;
+use function Hexlet\Code\parityCheck;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -13,18 +14,5 @@ greetings();
 //правила ответа
 line('Answer "yes" if the number is even, otherwise answer "no".');
 
-$i = 0;
-do {
-    $gen_number = rand(1, 100);
-    $correct_answer = (($gen_number % 2) == 0) ? 'yes' : 'no';
-    line("Question: %s", $gen_number);
-    $usr_answer = prompt('Your answer: ');
-
-    if ($usr_answer === $correct_answer) {
-        $i++;
-        line('Correct!');
-    } else {
-        line("'----' is wrong answer ;(. Correct answer was '----'. /n Let's try again, Tirion!");
-        break;
-    }
-} while ($i < 3);
+//вызываем нкцию игры "Проверка на чётность"
+parityCheck();
