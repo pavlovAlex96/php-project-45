@@ -1,18 +1,9 @@
 #!/usr/bin/env php
 <?php
 
-use function cli\line;
-use function cli\prompt;
 use function Hexlet\Code\greetings;
-use function Hexlet\Code\parityCheck;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 //взываем функцию приветствия
 greetings();
-
-//правила ответа
-line('Answer "yes" if the number is even, otherwise answer "no".');
-
-//вызываем нкцию игры "Проверка на чётность"
-parityCheck();
