@@ -10,3 +10,5 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pavlovAlex96_php-project-45&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pavlovAlex96_php-project-45)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pavlovAlex96_php-project-45&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=pavlovAlex96_php-project-45)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pavlovAlex96_php-project-45&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pavlovAlex96_php-project-45)
+
+*Пример работы игры :  https://asciinema.org/a/t53tO8vscwtPWuPX*
