@@ -4,34 +4,35 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use function cli\line;
-use function cli\prompt;
+use function Hexlet\Code\ask_answer;
+use function Hexlet\Code\greetings;
+use function Hexlet\Code\setRound;
 
 //  Приветствие
-line('Welcome to the Braine Games!');
-$name = prompt('May I have your Name?');
-line("Hello, %s", $name);
+greetings();
+
+//  Получаем колличество раундов
+$round = setRound();
 
 //  Правила ответа
 line('Answer "yes" if the number is even, otherwise answer "no".');
 
-//  Правильный ответ, проверка четности
-$i = 0;
-do {
-    $gen_number = rand(1, 100);
-    $correct_answer = (($gen_number % 2) == 0) ? 'yes' : 'no';
-    line("Question: %s", $gen_number);
-    $usr_answer = prompt('Your answer: ');
+//  Цикл игры
+for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
+    //  Генирация выражения
+    $task = ['question' => rand(1, 100)];
+    $task['answer'] = (($task['question'] % 2) == 0) ? 'yes' : 'no';
 
-    if ($usr_answer === $correct_answer) {
-        $i++;
-        line('Correct!');
-    } else {
-        line("'$usr_answer' is wrong answer ;(. Correct answer was '$correct_answer'. \nLet's try again, Tirion!");
+    //  Проверка ответа пользователя с решением
+    $userAnswer = ask_answer($task);
+
+    //  Выход из игры при неверном решении
+    if ($userAnswer === false) {
         break;
     }
-} while ($i < 3);
 
-if ($i == 3) {
-    //  Первая игра пройдена
-    line('Congratulations, Tirion!');
+    //  Игра пройдена
+    if ($numdTrueAnswer == $round) {
+        line('Congratulations, Tirion!');
+    }
 }
