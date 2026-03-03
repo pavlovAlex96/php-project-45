@@ -1,0 +1,56 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use function cli\line;
+use function Hexlet\Code\ask_answer;
+use function Hexlet\Code\greetings;
+use function Hexlet\Code\setRound;
+
+//  Приветствие
+greetings();
+
+//  Получаем колличество раундов
+$round = setRound();
+
+//  Правила ответа
+line('What is the result of the expression?');
+
+//  Цикл игры
+for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
+    //  Генирация выражения
+    $num1 = rand(1, 100);
+    $num2 = rand(1, 100);
+    $operations = ['+','-', '*'];
+    $randOperation = $operations[array_rand($operations)];
+
+    //  Запись выражения в массив для вывода пользователю
+    $task = ['question' => "{$num1} {$randOperation} {$num2}"];
+
+    //  Решение выражения и запись в массив для проверки ответа пользователя
+    switch ($randOperation) {
+        case '+':
+            $task['answer'] = $num1 + $num2;
+            break;
+        case '-':
+            $task['answer'] = $num1 - $num2;
+            break;
+        case '*':
+            $task['answer'] = $num1 * $num2;
+            break;
+    }
+
+    //  Проверка ответа пользователя с решением
+    $userAnswer = ask_answer($task);
+
+    //  Выход из игры при неверном решении
+    if ($userAnswer === false) {
+        break;
+    }
+
+    //  Игра пройдена
+    if ($numdTrueAnswer == $round) {
+        line('Congratulations, Tirion!');
+    }
+}
