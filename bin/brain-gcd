@@ -1,0 +1,6 @@
+#!/usr/bin/env php
+<?php
+
+use function cli\line;
+
+require __DIR__ . '/../vendor/autoload.php';
