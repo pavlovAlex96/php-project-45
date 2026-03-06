@@ -13,3 +13,4 @@
 
 *Пример работы игры "Проверка на четность" :  https://asciinema.org/a/t53tO8vscwtPWuPX*  
 *Пример работы игры "Калькулятор" :  https://asciinema.org/a/cMDNcdN5chzMESBV*
+*Пример работы игры "НОД" : https://asciinema.org/a/XRqRXrDE5eYwO9vD*
