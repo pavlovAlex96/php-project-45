@@ -17,7 +17,7 @@ brain-progression:
 	./bin/brain-progression
 
 brain-prime:
-	./bin/prime
+	./bin/brain-prime
 
 validate:
 	composer validate
