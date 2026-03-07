@@ -15,13 +15,13 @@ function setRound()
 function askAnswer($task)
 {
     line("Question: %s", $task['question']);
-    $usr_answer = prompt('Your answer: ');
+    $usrAnswer = prompt('Your answer: ');
 
-    if ($usr_answer == $task['answer']) {
+    if ($usrAnswer == $task['answer']) {
         line('Correct!');
         return true;
     } else {
-        line("'%s' is wrong answer ;(. Correct answer was '%s'.", $usr_answer, $task['answer']);
+        line("'%s' is wrong answer ;(. Correct answer was '%s'.", $usrAnswer, $task['answer']);
         line("Let's try again, Tirion!");
         return false;
     }
