@@ -26,3 +26,12 @@ function ask_answer($task)
         return false;
     }
 }
+
+// Генирация прогрессии
+function progression_creating($start, $step, $light)
+{
+    for ($index = 0; $index <= $light; $index++) {
+        $progression[$index] = $start + $step * $index;
+    }
+    return $progression;
+}
