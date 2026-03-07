@@ -4,7 +4,39 @@
 use function cli\line;
 use function Hexlet\Code\ask_answer;
 use function Hexlet\Code\greetings;
-use function Hexlet\Code\progression_creating;
 use function Hexlet\Code\setRound;
 
 require __DIR__ . '/../vendor/autoload.php';
+
+//  Приветствие
+greetings();
+
+//  Получаем колличество раундов
+$round = setRound();
+
+//  Правила ответа
+line('Answer "yes" if given number is prime. Otherwise answer "no".');
+
+//  Список простых чисел до 100
+$primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
+                 31, 37, 41, 43, 47, 53, 59, 61, 67,
+                 71, 73, 79, 83, 89, 97];
+
+//  Цикл игры
+for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
+    $task['question'] = rand(2, 100);
+    $task['answer'] = (in_array($task['question'], $primeNumbers)) ? 'yes' : 'no';
+
+    //  Проверка ответа пользователя с решением
+    $userAnswer = ask_answer($task);
+
+    //  Выход из игры при неверном решении
+    if ($userAnswer === false) {
+        break;
+    }
+
+    //  Игра пройдена
+    if ($numdTrueAnswer == $round) {
+        line('Congratulations, Tirion!');
+    }
+}
