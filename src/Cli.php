@@ -10,5 +10,5 @@ function greetings()
 {
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your Name?');
-    line("Hello, %s", $name);
+    line("Hello, %s!", $name);
 }
