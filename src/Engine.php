@@ -12,7 +12,7 @@ function setRound()
 }
 
 //  Проверка ответа пользователя с решением
-function ask_answer($task)
+function askAnswer($task)
 {
     line("Question: %s", $task['question']);
     $usr_answer = prompt('Your answer: ');
@@ -28,7 +28,7 @@ function ask_answer($task)
 }
 
 // Генирация прогрессии
-function progression_creating($start, $step, $light)
+function progressionCreating($start, $step, $light)
 {
     for ($index = 0; $index <= $light; $index++) {
         $progression[$index] = $start + $step * $index;

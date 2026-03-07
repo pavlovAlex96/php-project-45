@@ -4,7 +4,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use function cli\line;
-use function Hexlet\Code\ask_answer;
+use function Hexlet\Code\askAnswer;
 use function Hexlet\Code\greetings;
 use function Hexlet\Code\setRound;
 
@@ -42,7 +42,7 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
     }
 
     //  Проверка ответа пользователя с решением
-    $userAnswer = ask_answer($task);
+    $userAnswer = askAnswer($task);
 
     //  Выход из игры при неверном решении
     if ($userAnswer === false) {

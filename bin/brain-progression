@@ -2,9 +2,9 @@
 <?php
 
 use function cli\line;
-use function Hexlet\Code\ask_answer;
+use function Hexlet\Code\askAnswer;
 use function Hexlet\Code\greetings;
-use function Hexlet\Code\progression_creating;
+use function Hexlet\Code\progressionCreating;
 use function Hexlet\Code\setRound;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -28,7 +28,7 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
 
 
     //  Генирация прогрессии
-    $progression = progression_creating($startProgression, $stepPrigression, $progressionLength);
+    $progression = progressionCreating($startProgression, $stepPrigression, $progressionLength);
 
     //  Составление вопроса и ответа
     $task['answer'] = $progression[$keyQuestion];
@@ -36,7 +36,7 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
     $task['question'] = implode(', ', $progression);
 
     //  Проверка ответа пользователя с решением
-    $userAnswer = ask_answer($task);
+    $userAnswer = askAnswer($task);
 
     // Обнуление прогрессии
     $progression = [];
