@@ -9,6 +9,6 @@ use function cli\prompt;
 function greetings()
 {
     line('Welcome to the Brain Games!');
-    $name = prompt('May I have your Name?');
+    $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
 }
