@@ -33,7 +33,7 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
     //  Составление вопроса и ответа
     $task['answer'] = $progression[$keyQuestion];
     $progression[$keyQuestion] = '..';
-    $task['question'] = implode(', ', $progression);
+    $task['question'] = implode(' ', $progression);
 
     //  Проверка ответа пользователя с решением
     $userAnswer = askAnswer($task);
