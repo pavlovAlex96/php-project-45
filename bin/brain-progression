@@ -1,4 +1,53 @@
 #!/usr/bin/env php
 <?php
 
+use function cli\line;
+use function Hexlet\Code\ask_answer;
+use function Hexlet\Code\greetings;
+use function Hexlet\Code\progression_creating;
+use function Hexlet\Code\setRound;
+
 require __DIR__ . '/../vendor/autoload.php';
+
+//  Приветствие
+greetings();
+
+//  Получаем колличество раундов
+$round = setRound();
+
+//  Правила ответа
+line('What number is missing in the progression?');
+
+//  Цикл игры
+for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
+    // Определение стартовых позиций прогресси
+    $progressionLength = rand(4, 9);
+    $stepPrigression = rand(1, 10);
+    $keyQuestion = rand(0, $progressionLength);
+    $startProgression = rand(1, 100);
+
+
+    //  Генирация прогрессии
+    $progression = progression_creating($startProgression, $stepPrigression, $progressionLength);
+
+    //  Составление вопроса и ответа
+    $task['answer'] = $progression[$keyQuestion];
+    $progression[$keyQuestion] = '..';
+    $task['question'] = implode(', ', $progression);
+
+    //  Проверка ответа пользователя с решением
+    $userAnswer = ask_answer($task);
+
+    // Обнуление прогрессии
+    $progression = [];
+
+    //  Выход из игры при неверном решении
+    if ($userAnswer === false) {
+        break;
+    }
+
+    //  Игра пройдена
+    if ($numdTrueAnswer == $round) {
+        line('Congratulations, Tirion!');
+    }
+}
