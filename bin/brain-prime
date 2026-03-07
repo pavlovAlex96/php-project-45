@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+use function cli\line;
+use function Hexlet\Code\ask_answer;
+use function Hexlet\Code\greetings;
+use function Hexlet\Code\progression_creating;
+use function Hexlet\Code\setRound;
+
+require __DIR__ . '/../vendor/autoload.php';
