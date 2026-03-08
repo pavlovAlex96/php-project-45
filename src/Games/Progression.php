@@ -20,5 +20,4 @@ function getProgression(array $progression, int $light): array
     $task['question'] = implode(' ', $progression);
 
     return $task;
-
 }
