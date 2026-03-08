@@ -2,6 +2,8 @@
 
 namespace Hexlet\Code\Games;
 
+use function cli\line;
+
 function getCalc(): array
 {
     //  Генирация выражения
@@ -25,7 +27,7 @@ function getCalc(): array
             $task['answer'] = $num1 * $num2;
             break;
         default:
-            throw new \Exception('Unknown operation');
+            line('Неизвестная операция');
     }
     return $task;
 }
