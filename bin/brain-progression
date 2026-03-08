@@ -3,8 +3,10 @@
 
 use function cli\line;
 use function Hexlet\Code\askAnswer;
+use function Hexlet\Code\congratulations;
+use function Hexlet\Code\Games\getProgression;
+use function Hexlet\Code\Games\progressionCreating;
 use function Hexlet\Code\greetings;
-use function Hexlet\Code\progressionCreating;
 use function Hexlet\Code\setRound;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -23,7 +25,6 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
     // Определение стартовых позиций прогресси
     $progressionLength = rand(4, 9);
     $stepPrigression = rand(1, 10);
-    $keyQuestion = rand(0, $progressionLength);
     $startProgression = rand(1, 100);
 
 
@@ -31,9 +32,7 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
     $progression = progressionCreating($startProgression, $stepPrigression, $progressionLength);
 
     //  Составление вопроса и ответа
-    $task['answer'] = $progression[$keyQuestion];
-    $progression[$keyQuestion] = '..';
-    $task['question'] = implode(' ', $progression);
+    $task = getProgression($progression, $progressionLength);
 
     //  Проверка ответа пользователя с решением
     $userAnswer = askAnswer($task, $nameUser);
@@ -45,9 +44,6 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
     if ($userAnswer === false) {
         break;
     }
-
-    //  Игра пройдена
-    if ($numdTrueAnswer == $round) {
-        line('Congratulations, %s!', $nameUser);
-    }
+    // Поздравление при полном прохождении
+    congratulations($numdTrueAnswer, $round, $nameUser);
 }

@@ -27,15 +27,11 @@ function askAnswer(array $task, string $name): bool
     }
 }
 
-
-//  Вывод итогов пользователю
-
-// Генирация прогрессии
-function progressionCreating(int $start, int $step, int $light): array
+//  Поздравление при полном прохождении
+function congratulations(int $nuber, int $finalNumber, string $user): void
 {
-    $progression = [];
-    for ($index = 0; $index <= $light; $index++) {
-        $progression[$index] = $start + $step * $index;
+    //  Игра пройдена
+    if ($nuber == $finalNumber) {
+        line('Congratulations, %s!', $user);
     }
-    return $progression;
 }

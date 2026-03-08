@@ -5,6 +5,8 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use function cli\line;
 use function Hexlet\Code\askAnswer;
+use function Hexlet\Code\congratulations;
+use function Hexlet\Code\Games\getCalc;
 use function Hexlet\Code\greetings;
 use function Hexlet\Code\setRound;
 
@@ -19,27 +21,8 @@ line('What is the result of the expression?');
 
 //  Цикл игры
 for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
-    //  Генирация выражения
-    $num1 = rand(1, 100);
-    $num2 = rand(1, 100);
-    $operations = ['+','-', '*'];
-    $randOperation = $operations[array_rand($operations)];
-
-    //  Запись выражения в массив для вывода пользователю
-    $task = ['question' => "{$num1} {$randOperation} {$num2}"];
-
-    //  Решение выражения и запись в массив для проверки ответа пользователя
-    switch ($randOperation) {
-        case '+':
-            $task['answer'] = $num1 + $num2;
-            break;
-        case '-':
-            $task['answer'] = $num1 - $num2;
-            break;
-        case '*':
-            $task['answer'] = $num1 * $num2;
-            break;
-    }
+    //  Генирация вопроса и ответа
+    $task = getCalc();
 
     //  Проверка ответа пользователя с решением
     $userAnswer = askAnswer($task, $nameUser);
@@ -49,8 +32,6 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
         break;
     }
 
-    //  Игра пройдена
-    if ($numdTrueAnswer == $round) {
-        line('Congratulations, %s!', $nameUser);
-    }
+    //  Поздравление при полном прохождении
+    congratulations($numdTrueAnswer, $round, $nameUser);
 }

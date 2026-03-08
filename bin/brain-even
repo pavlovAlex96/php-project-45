@@ -5,6 +5,8 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use function cli\line;
 use function Hexlet\Code\askAnswer;
+use function Hexlet\Code\congratulations;
+use function Hexlet\Code\Games\getEven;
 use function Hexlet\Code\greetings;
 use function Hexlet\Code\setRound;
 
@@ -19,9 +21,8 @@ line('Answer "yes" if the number is even, otherwise answer "no".');
 
 //  Цикл игры
 for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
-    //  Генирация выражения
-    $task = ['question' => rand(1, 100)];
-    $task['answer'] = (($task['question'] % 2) == 0) ? 'yes' : 'no';
+    //  Генирация вопроса и ответа
+    $task = getEven();
 
     //  Проверка ответа пользователя с решением
     $userAnswer = askAnswer($task ,$nameUser);
@@ -31,8 +32,6 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
         break;
     }
 
-    //  Игра пройдена
-    if ($numdTrueAnswer == $round) {
-        line('Congratulations, %s!', $nameUser);
-    }
+    //  Поздравление при полном прохождении
+    congratulations($numdTrueAnswer, $round, $nameUser);
 }

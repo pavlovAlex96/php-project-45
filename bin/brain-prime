@@ -3,6 +3,8 @@
 
 use function cli\line;
 use function Hexlet\Code\askAnswer;
+use function Hexlet\Code\congratulations;
+use function Hexlet\Code\Games\getPrime;
 use function Hexlet\Code\greetings;
 use function Hexlet\Code\setRound;
 
@@ -17,15 +19,10 @@ $round = setRound();
 //  Правила ответа
 line('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-//  Список простых чисел до 100
-$primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
-                 31, 37, 41, 43, 47, 53, 59, 61, 67,
-                 71, 73, 79, 83, 89, 97];
-
 //  Цикл игры
 for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
-    $task['question'] = rand(2, 100);
-    $task['answer'] = (in_array($task['question'], $primeNumbers)) ? 'yes' : 'no';
+    //  Генирация вопроса и ответа
+    $task = getPrime();
 
     //  Проверка ответа пользователя с решением
     $userAnswer = askAnswer($task, $nameUser);
@@ -35,8 +32,6 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
         break;
     }
 
-    //  Игра пройдена
-    if ($numdTrueAnswer == $round) {
-        line('Congratulations, %s!', $nameUser);
-    }
+    //  Поздравление при полном прохождении
+    congratulations($numdTrueAnswer, $round, $nameUser);
 }
