@@ -31,7 +31,7 @@ function askAnswer(array $task, string $name): bool
 //  Вывод итогов пользователю
 
 // Генирация прогрессии
-function progressionCreating(int $start, int $step, int $light): array 
+function progressionCreating(int $start, int $step, int $light): array
 {
     $progression = [];
     for ($index = 0; $index <= $light; $index++) {
