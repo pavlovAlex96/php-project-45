@@ -24,6 +24,8 @@ function getCalc(): array
         case '*':
             $task['answer'] = $num1 * $num2;
             break;
+        default:
+            throw new \Exception('Unknown operation');
     }
     return $task;
 }
