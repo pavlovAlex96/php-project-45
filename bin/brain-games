@@ -6,4 +6,4 @@ use function Hexlet\Code\greetings;
 require __DIR__ . '/../vendor/autoload.php';
 
 //взываем функцию приветствия
-greetings();
+$nameUser = greetings();

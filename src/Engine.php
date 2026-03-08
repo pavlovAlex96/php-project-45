@@ -12,20 +12,23 @@ function setRound(): int
 }
 
 //  Проверка ответа пользователя с решением
-function askAnswer(array $task): bool
+function askAnswer(array $task, string $name): bool
 {
     line("Question: %s", $task['question']);
     $usrAnswer = prompt('Your answer: ');
 
-    if ($usrAnswer === $task['answer']) {
+    if ($usrAnswer === (string)$task['answer']) {
         line('Correct!');
         return true;
     } else {
         line("'%s' is wrong answer ;(. Correct answer was '%s'.", $usrAnswer, $task['answer']);
-        line("Let's try again, Tirion!");
+        line("Let's try again, %s!", $name);
         return false;
     }
 }
+
+
+//  Вывод итогов пользователю
 
 // Генирация прогрессии
 function progressionCreating(int $start, int $step, int $light): array 

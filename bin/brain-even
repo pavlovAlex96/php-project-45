@@ -9,7 +9,7 @@ use function Hexlet\Code\greetings;
 use function Hexlet\Code\setRound;
 
 //  Приветствие
-greetings();
+$nameUser = greetings();
 
 //  Получаем колличество раундов
 $round = setRound();
@@ -24,7 +24,7 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
     $task['answer'] = (($task['question'] % 2) == 0) ? 'yes' : 'no';
 
     //  Проверка ответа пользователя с решением
-    $userAnswer = askAnswer($task);
+    $userAnswer = askAnswer($task ,$nameUser);
 
     //  Выход из игры при неверном решении
     if ($userAnswer === false) {
@@ -33,6 +33,6 @@ for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
 
     //  Игра пройдена
     if ($numdTrueAnswer == $round) {
-        line('Congratulations, Tirion!');
+        line('Congratulations, %s!', $nameUser);
     }
 }
