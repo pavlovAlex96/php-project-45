@@ -31,7 +31,7 @@ function askAnswer(array $task, string $name): bool
 function congratulations(int $nuber, int $finalNumber, string $user): void
 {
     //  Игра пройдена
-    if ($nuber == $finalNumber) {
+    if ($nuber === $finalNumber) {
         line('Congratulations, %s!', $user);
     }
 }

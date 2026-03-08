@@ -6,7 +6,7 @@ namespace Hexlet\Code\Games;
 function getEven(): array
 {
     $task = ['question' => rand(1, 100)];
-    $task['answer'] = (($task['question'] % 2) == 0) ? 'yes' : 'no';
+    $task['answer'] = (($task['question'] % 2) === 0) ? 'yes' : 'no';
 
     return $task;
 }

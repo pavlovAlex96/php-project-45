@@ -15,7 +15,7 @@ function getGcd(): array
     $numTwo = $num2;
     do {
         $remainder = $numOne % $numTwo;
-        if ($remainder == 0) {
+        if ($remainder === 0) {
             $task['answer'] = $numTwo;
             $flag = true;
         } else {

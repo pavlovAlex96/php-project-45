@@ -9,8 +9,8 @@ function getPrime(): array
                     31, 37, 41, 43, 47, 53, 59, 61, 67,
                     71, 73, 79, 83, 89, 97];
 
-    $task['question'] = rand(2, 100);
-    $task['answer'] = (in_array($task['question'], $primeNumbers)) ? 'yes' : 'no';
+    $task = ['question' => rand(2, 100)];
+    $task['answer'] = (in_array($task['question'], $primeNumbers, true)) ? 'yes' : 'no';
 
     return $task;
 }
