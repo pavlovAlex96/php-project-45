@@ -12,6 +12,7 @@ function progressionCreating(int $start, int $step, int $light): array
     return $progression;
 }
 
+//  Составление вопроса и ответа
 function getProgression(array $progression, int $light): array
 {
     $keyQuestion = rand(0, $light);
