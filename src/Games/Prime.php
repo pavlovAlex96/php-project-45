@@ -13,7 +13,7 @@ function run(): void
 
 //  Генерация числа и расчет правильного ответа
 function getTaskPrime(): array
-{    
+{
     $task = ['question' => rand(2, 100)];
 
     if ($task['question'] == 2 || $task['question'] == 3) {
@@ -27,7 +27,7 @@ function getTaskPrime(): array
             if ($task['question'] % $num == 0) {
                 $task['answer'] = 'no';
                 break;
-            } 
+            }
         }
     }
     return $task;
