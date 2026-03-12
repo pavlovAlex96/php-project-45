@@ -1,37 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-use function cli\line;
-use function Hexlet\Code\askAnswer;
-use function Hexlet\Code\congratulations;
-use function Hexlet\Code\Games\getGcd;
-use function Hexlet\Code\greetings;
-use function Hexlet\Code\setRound;
+use function Hexlet\Code\Games\Gcd\run;
 
-require __DIR__ . '/../vendor/autoload.php';
-
-//  Приветствие
-$nameUser = greetings();
-
-//  Получаем колличество раундов
-$round = setRound();
-
-//  Правила ответа
-line('Find the greatest common divisor of given numbers.');
-
-//  Цикл игры
-for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
-    //  Генирация вопроса и ответа
-    $task = getGcd();
-
-    //  Проверка ответа пользователя с решением
-    $userAnswer = askAnswer($task, $nameUser);
-
-    //  Выход из игры при неверном решении
-    if ($userAnswer === false) {
-        break;
-    }
-
-    //  Поздравление при полном прохождении
-    congratulations($numdTrueAnswer, $round, $nameUser);
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
 }
+
+run();

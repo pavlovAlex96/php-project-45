@@ -1,37 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+use function Hexlet\Code\Games\Even\run;
 
-use function cli\line;
-use function Hexlet\Code\askAnswer;
-use function Hexlet\Code\congratulations;
-use function Hexlet\Code\Games\getEven;
-use function Hexlet\Code\greetings;
-use function Hexlet\Code\setRound;
-
-//  Приветствие
-$nameUser = greetings();
-
-//  Получаем колличество раундов
-$round = setRound();
-
-//  Правила ответа
-line('Answer "yes" if the number is even, otherwise answer "no".');
-
-//  Цикл игры
-for ($numdTrueAnswer = 1; $numdTrueAnswer <= $round; $numdTrueAnswer++) {
-    //  Генирация вопроса и ответа
-    $task = getEven();
-
-    //  Проверка ответа пользователя с решением
-    $userAnswer = askAnswer($task ,$nameUser);
-
-    //  Выход из игры при неверном решении
-    if ($userAnswer === false) {
-        break;
-    }
-
-    //  Поздравление при полном прохождении
-    congratulations($numdTrueAnswer, $round, $nameUser);
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
 }
+
+run();
