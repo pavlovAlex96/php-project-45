@@ -24,7 +24,7 @@ function getTaskProgression(): array
 }
 
 //  Состаление прогрессии
-function getProgression(int $light, int $step, $start): array
+function getProgression(int $light, int $step, int $start): array
 {
     $progression = [];
     for ($index = 0; $index <= $light; $index++) {
