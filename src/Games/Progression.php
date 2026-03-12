@@ -1,9 +1,29 @@
 <?php
 
-namespace Hexlet\Code\Games;
+namespace Hexlet\Code\Games\Progression;
+
+use function Hexlet\Code\Engine\runGame;
+
+function run(): void
+{
+    //  Правила ответа
+    $rules = 'What number is missing in the progression?';
+    runGame(fn() => getTaskProgression(), $rules);
+}
 
 // Генирация прогрессии
-function progressionCreating(int $start, int $step, int $light): array
+function getTaskProgression(): array
+{
+    $progressionLength = rand(4, 9);
+    $stepPrigression = rand(1, 10);
+    $startProgression = rand(1, 100);
+
+    $progression = getProgression($progressionLength, $stepPrigression, $startProgression);
+
+    return getProgressionQuestion($progression, $progressionLength);
+}
+
+function getProgression(int $light, int $step, $start): array
 {
     $progression = [];
     for ($index = 0; $index <= $light; $index++) {
@@ -13,7 +33,7 @@ function progressionCreating(int $start, int $step, int $light): array
 }
 
 //  Составление вопроса и ответа
-function getProgression(array $progression, int $light): array
+function getProgressionQuestion(array $progression, int $light): array
 {
     $keyQuestion = rand(0, $light);
     $task = ['answer' => $progression[$keyQuestion]];

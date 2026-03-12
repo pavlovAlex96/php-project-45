@@ -1,10 +1,17 @@
 <?php
 
-namespace Hexlet\Code\Games;
+namespace Hexlet\Code\Games\Calc;
 
-use function cli\line;
+use function Hexlet\Code\Engine\runGame;
 
-function getCalc(): array
+function run(): void
+{
+    //  Правила ответа
+    $rules = 'What is the result of the expression?';
+    runGame(fn() => getTaskCalc(), $rules);
+}
+
+function getTaskCalc(): array
 {
     //  Генирация выражения
     $num1 = rand(1, 100);
@@ -12,6 +19,13 @@ function getCalc(): array
     $operations = ['+','-', '*'];
     $randOperation = $operations[array_rand($operations)];
 
+    //  Решение выражения и запись в массив для проверки ответа пользователя
+    return getCalc($num1, $num2, $randOperation);
+}
+
+//  Решение выражения и запись в массив для проверки ответа пользователя
+function getCalc(int $num1, int $num2, string $randOperation): array
+{
     //  Запись выражения в массив для вывода пользователю
     $task = ['question' => "{$num1} {$randOperation} {$num2}"];
 
@@ -27,7 +41,7 @@ function getCalc(): array
             $task['answer'] = $num1 * $num2;
             break;
         default:
-            line('Неизвестная операция');
+            exit('Неизвестная операция');
     }
     return $task;
 }

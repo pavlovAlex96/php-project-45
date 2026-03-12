@@ -1,16 +1,35 @@
 <?php
 
-namespace Hexlet\Code\Games;
+namespace Hexlet\Code\Games\Prime;
 
-function getPrime(): array
+use function Hexlet\Code\Engine\runGame;
+
+function run(): void
 {
-    //  Список простых чисел до 100
-    $primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
-                    31, 37, 41, 43, 47, 53, 59, 61, 67,
-                    71, 73, 79, 83, 89, 97];
+    //  Правила ответа
+    $rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    runGame(fn() => getTaskPrime(), $rules);
+}
 
+
+function getTaskPrime(): array
+{
     $task = ['question' => rand(2, 100)];
-    $task['answer'] = (in_array($task['question'], $primeNumbers, true)) ? 'yes' : 'no';
 
+    if ($task['question'] = 2 || 3) {
+        $task['answer'] = 'yes';
+    } elseif ($task['question'] % 2 == 0) {
+        $task['answer'] = 'no';
+    } else {
+        $sqrtRoundQuest = round(sqrt($task['question']));
+        for ($num = 3; $num <= $sqrtRoundQuest; $num += 2) {
+            if ($task['question'] % $num == 0) {
+                $task['answer'] = 'no';
+                break;
+            } else {
+                $task['answer'] = 'yes';
+            }
+        }
+    }
     return $task;
 }
