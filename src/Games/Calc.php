@@ -11,6 +11,7 @@ function run(): void
     runGame(fn() => getTaskCalc(), $rules);
 }
 
+//  Калькулятор и его стартовые значения
 function getTaskCalc(): array
 {
     //  Генирация выражения
@@ -19,7 +20,6 @@ function getTaskCalc(): array
     $operations = ['+','-', '*'];
     $randOperation = $operations[array_rand($operations)];
 
-    //  Решение выражения и запись в массив для проверки ответа пользователя
     return getCalc($num1, $num2, $randOperation);
 }
 

@@ -11,7 +11,7 @@ function run(): void
     runGame(fn() => getTaskPrime(), $rules);
 }
 
-
+//  Генерация числа и расчет правильного ответа
 function getTaskPrime(): array
 {    
     $task = ['question' => rand(2, 100)];

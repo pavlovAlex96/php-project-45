@@ -11,7 +11,7 @@ function run(): void
     runGame(fn() => getTaskProgression(), $rules);
 }
 
-// Генирация прогрессии
+//  Прогрессия и ее стартовые значения
 function getTaskProgression(): array
 {
     $progressionLength = rand(4, 9);
@@ -23,6 +23,7 @@ function getTaskProgression(): array
     return getProgressionQuestion($progression, $progressionLength);
 }
 
+//  Состаление прогрессии
 function getProgression(int $light, int $step, $start): array
 {
     $progression = [];

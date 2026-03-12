@@ -13,15 +13,16 @@ use function Hexlet\Code\Games\Progression\getTaskProgression;
 //  Устанавливаем колличество раундов в играх
 const ROUND = 3;
 
-//  Проверка ответа пользователя с решением
+//  Запуск общей логики игр
 function runGame(callable $getTask, string $rules): void
 {
-    //  Приветствие
+    //  Приветствие и вывод правил игры
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     line($rules);
 
+    //  Основной цикл
     for ($numdTrueAnswer = 1; $numdTrueAnswer <= ROUND; $numdTrueAnswer++) {
         $task = $getTask();
         line("Question: %s", $task['question']);

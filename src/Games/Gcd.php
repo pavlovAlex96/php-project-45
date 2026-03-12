@@ -11,6 +11,7 @@ function run(): void
     runGame(fn() => getTaskGcd(), $rules);
 }
 
+//  НОД
 function getTaskGcd(): array
 {
     //  Генирация 2-х чисел
@@ -21,6 +22,7 @@ function getTaskGcd(): array
     return getGcd($num1, $num2);
 }
 
+ //  Составление вопроса и ответа
 function getGcd(int $num1, int $num2): array
 {
     $task = ['question' => "{$num1} {$num2}"];
