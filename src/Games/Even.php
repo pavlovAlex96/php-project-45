@@ -20,7 +20,7 @@ function run(): void
 }
 
 //  Решение
-function isEven(int $number): int
+function isEven(int $number): bool
 {
     return ($number % 2) === 0;
 }
