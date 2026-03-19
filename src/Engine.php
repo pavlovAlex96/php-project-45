@@ -4,14 +4,9 @@ namespace Hexlet\Code\Engine;
 
 use function cli\line;
 use function cli\prompt;
-use function Hexlet\Code\Games\Calc\getTaskCalc;
-use function Hexlet\Code\Games\Even\getTaskEven;
-use function Hexlet\Code\Games\Gcd\getTaskGcd;
-use function Hexlet\Code\Games\Prime\getTaskPrime;
-use function Hexlet\Code\Games\Progression\getTaskProgression;
 
 //  Устанавливаем колличество раундов в играх
-const ROUND = 3;
+const ROUNDS_COUNT = 3;
 
 //  Запуск общей логики игр
 function runGame(callable $getTask, string $rules): void
@@ -23,7 +18,7 @@ function runGame(callable $getTask, string $rules): void
     line($rules);
 
     //  Основной цикл
-    for ($numdTrueAnswer = 1; $numdTrueAnswer <= ROUND; $numdTrueAnswer++) {
+    for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         $task = $getTask();
         line("Question: %s", $task['question']);
         $usrAnswer = prompt('Your answer: ');
@@ -33,11 +28,9 @@ function runGame(callable $getTask, string $rules): void
         } else {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $usrAnswer, $task['answer']);
             line("Let's try again, %s!", $name);
-            break;
-        }
-        //  Игра пройдена
-        if ($numdTrueAnswer === ROUND) {
-            line('Congratulations, %s!', $name);
+            return;
         }
     }
+    //  Игра пройдена
+    line('Congratulations, %s!', $name);
 }
