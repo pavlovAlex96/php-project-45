@@ -4,42 +4,37 @@ namespace Hexlet\Code\Games\Progression;
 
 use function Hexlet\Code\Engine\runGame;
 
+//  Правила ответа
+const DESCRIPTION = 'What number is missing in the progression?';
+
+
 function run(): void
 {
-    //  Правила ответа
-    $rules = 'What number is missing in the progression?';
-    runGame(fn() => getTaskProgression(), $rules);
+    runGame(function () {
+        //  Cтартовые значения
+        $progressionLength = rand(4, 9);
+        $stepPrigression = rand(1, 10);
+        $startProgression = rand(1, 100);
+
+        //  Составление прогрессии
+        $progression = isProgression($progressionLength, $stepPrigression, $startProgression);
+
+        //  Составление вопроса и ответа
+        $keyQuestion = rand(0, $progressionLength);
+        $task = ['answer' => $progression[$keyQuestion]];
+        $progression[$keyQuestion] = '..';
+        $task['question'] = implode(' ', $progression);
+
+        return $task;
+    }, DESCRIPTION);
 }
 
-//  Прогрессия и ее стартовые значения
-function getTaskProgression(): array
-{
-    $progressionLength = rand(4, 9);
-    $stepPrigression = rand(1, 10);
-    $startProgression = rand(1, 100);
-
-    $progression = getProgression($progressionLength, $stepPrigression, $startProgression);
-
-    return getProgressionQuestion($progression, $progressionLength);
-}
-
-//  Состаление прогрессии
-function getProgression(int $light, int $step, int $start): array
+//  Составление прогрессии
+function isProgression(int $light, int $step, int $start): array
 {
     $progression = [];
     for ($index = 0; $index <= $light; $index++) {
         $progression[$index] = $start + $step * $index;
     }
     return $progression;
-}
-
-//  Составление вопроса и ответа
-function getProgressionQuestion(array $progression, int $light): array
-{
-    $keyQuestion = rand(0, $light);
-    $task = ['answer' => $progression[$keyQuestion]];
-    $progression[$keyQuestion] = '..';
-    $task['question'] = implode(' ', $progression);
-
-    return $task;
 }

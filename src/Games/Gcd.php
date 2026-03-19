@@ -4,43 +4,40 @@ namespace Hexlet\Code\Games\Gcd;
 
 use function Hexlet\Code\Engine\runGame;
 
+//  Правила ответа
+const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
+
+
 function run(): void
 {
-    //  Правила ответа
-    $rules = 'AFind the greatest common divisor of given numbers.';
-    runGame(fn() => getTaskGcd(), $rules);
+    runGame(function () {
+        //  Генирация 2-х чисел
+        $buf = rand(1, 10);
+        $num1 = $buf * rand(1, 20);
+        $num2 = $buf * rand(1, 20);
+
+
+        $task = ['question' => "{$num1} {$num2}"];
+        $task['answer'] = getGcd($num1, $num2);
+
+        return $task;
+    }, DESCRIPTION);
 }
 
-//  НОД
-function getTaskGcd(): array
+ //  Составление ответа
+function getGcd(int $num1, int $num2): int
 {
-    //  Генирация 2-х чисел
-    $buf = rand(1, 10);
-    $num1 = $buf * rand(1, 10);
-    $num2 = $buf * rand(1, 10);
-
-    return getGcd($num1, $num2);
-}
-
- //  Составление вопроса и ответа
-function getGcd(int $num1, int $num2): array
-{
-    $task = ['question' => "{$num1} {$num2}"];
-
-    // Решение задачи
-    $numOne = $num1;
-    $numTwo = $num2;
     do {
-        $remainder = $numOne % $numTwo;
+        $remainder = $num1 % $num2;
         if ($remainder === 0) {
-            $task['answer'] = $numTwo;
+            $result = $num2;
             $flag = true;
         } else {
-            $numOne = $numTwo;
-            $numTwo = $remainder;
+            $num1 = $num2;
+            $num2 = $remainder;
             $flag = false;
         }
     } while ($flag === false);
 
-    return $task;
+    return $result;
 }

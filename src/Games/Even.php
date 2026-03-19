@@ -4,18 +4,23 @@ namespace Hexlet\Code\Games\Even;
 
 use function Hexlet\Code\Engine\runGame;
 
+//  Правила ответа
+const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
+
 function run(): void
 {
-    //  Правила ответа
-    $rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-    runGame(fn() => getTaskEven(), $rules);
+    runGame(function () {
+        $number = rand(1, 100);
+
+        $task = ['question' => $number];
+        $task['answer'] = isEven($number) ? 'yes' : 'no';
+
+        return $task;
+    }, DESCRIPTION);
 }
 
-//  Генирация выражения
-function getTaskEven(): array
+//  Решение
+function isEven(int $number): int
 {
-    $task = ['question' => rand(1, 100)];
-    $task['answer'] = (($task['question'] % 2) === 0) ? 'yes' : 'no';
-
-    return $task;
+    return ($number % 2) === 0;
 }
