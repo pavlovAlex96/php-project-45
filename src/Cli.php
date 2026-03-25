@@ -5,7 +5,6 @@ namespace Hexlet\Code;
 use function cli\line;
 use function cli\prompt;
 
-//  Функция приветсвия
 function greetings(): void
 {
     line('Welcome to the Brain Games!');
