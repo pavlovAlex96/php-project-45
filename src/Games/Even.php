@@ -4,22 +4,23 @@ namespace Hexlet\Code\Games\Even;
 
 use function Hexlet\Code\Engine\runGame;
 
-//  Правила ответа
 const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 100;
 
 function run(): void
 {
     runGame(function () {
-        $number = rand(1, 100);
+        $number = rand(MIN_NUMBER, MAX_NUMBER);
 
         $task = ['question' => $number];
-        $task['answer'] = isEven($number) ? 'yes' : 'no';
+        $task['correctAnswer'] = isEven($number) ? 'yes' : 'no';
 
         return $task;
     }, DESCRIPTION);
 }
 
-//  Решение
 function isEven(int $number): bool
 {
     return ($number % 2) === 0;

@@ -4,37 +4,35 @@ namespace Hexlet\Code\Games\Progression;
 
 use function Hexlet\Code\Engine\runGame;
 
-//  Правила ответа
 const DESCRIPTION = 'What number is missing in the progression?';
+
+const MIN_LENGTH = 5;
+const MAX_LENGTH = 10;
+
+const MIN_STEP = 1;
+const MAX_STEP = 10;
+
+const MIN_START = 1;
+const MAX_START = 100;
 
 
 function run(): void
 {
     runGame(function () {
-        //  Cтартовые значения
-        $progressionLength = rand(4, 9);
-        $stepPrigression = rand(1, 10);
-        $startProgression = rand(1, 100);
+        $progressionLength = rand(MIN_LENGTH, MAX_LENGTH);
+        $stepProgression = rand(MIN_STEP, MAX_STEP);
+        $startProgression = rand(MIN_START, MAX_START);
 
-        //  Составление прогрессии
-        $progression = isProgression($progressionLength, $stepPrigression, $startProgression);
+        $progression = [];
+        for ($i = 0; $i <= $progressionLength; $i++) {
+            $progression[$i] = $startProgression + $stepProgression * $i;
+        }
 
-        //  Составление вопроса и ответа
-        $keyQuestion = rand(0, $progressionLength);
-        $task = ['answer' => $progression[$keyQuestion]];
+        $keyQuestion = rand(0, $progressionLength - 1);
+        $task = ['correctAnswer' => $progression[$keyQuestion]];
         $progression[$keyQuestion] = '..';
         $task['question'] = implode(' ', $progression);
 
         return $task;
     }, DESCRIPTION);
-}
-
-//  Составление прогрессии
-function isProgression(int $light, int $step, int $start): array
-{
-    $progression = [];
-    for ($index = 0; $index <= $light; $index++) {
-        $progression[$index] = $start + $step * $index;
-    }
-    return $progression;
 }

@@ -4,22 +4,23 @@ namespace Hexlet\Code\Games\Prime;
 
 use function Hexlet\Code\Engine\runGame;
 
-//  Правила ответа
 const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+const MIN_NUMBER = 2;
+const MAX_NUMBER = 100;
 
 function run(): void
 {
     runGame(function () {
-        $randNumber = rand(2, 100);
+        $randNumber = rand(MIN_NUMBER, MAX_NUMBER);
 
         $task = ['question' => $randNumber];
-        $task['answer'] = isPrime($randNumber) ? 'yes' : 'no';
+        $task['correctAnswer'] = isPrime($randNumber) ? 'yes' : 'no';
 
         return $task;
     }, DESCRIPTION);
 }
 
-//  Генерация числа и расчет правильного ответа
 function isPrime(int $number): bool
 {
     if ($number === 2 || $number === 3) {
